@@ -2,7 +2,7 @@
 
 name: approval-workflow
 
-on: pull_Request_Review
+on: pull_request
 
 jobs:
   labelwhenapproved:
