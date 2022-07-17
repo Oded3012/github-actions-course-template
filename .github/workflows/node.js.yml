@@ -12,20 +12,19 @@ on:
 jobs:
   build:
 
-    runs-on: [ubuntu-latest]
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: npm install and webpacks
-      run:
-        npm install
-        npm run build
-      
+      run: |
+       npm install
+       npm run build
   test:
-    runs-on: [windows-2019]
-  
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [12.x, 14.x]
+        os: [ubuntu-latest, windows-latest]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -35,7 +34,9 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - name: npm install and test
-      run: 
-        npm install
-        npm test
-      
+      run: |
+       npm install
+       npm run build
+       npm test -- -u
+      env:
+        CI: true
