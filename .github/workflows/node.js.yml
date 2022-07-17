@@ -21,7 +21,7 @@ jobs:
         npm run build
       
   test:
-    runs-on: [ubuntu-18.04, windows-2019]
+    runs-on: [windows-2019]
   
     strategy:
       matrix:
